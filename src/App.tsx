@@ -1,13 +1,17 @@
-export default function App() {
-  const totalProducts = 10;
-  
+// import DemoCounter from "./pages/DemoCounter";
+import { DemoList } from "./pages/DemoList";
+
+function App() {
+
   return (
     <>
-    {
-      totalProducts ?
-      <div>there are {totalProducts} products</div> :
-      <div>no items</div>
-    }
+    {/* <h1>Demo Counter</h1>
+    <DemoCounter /> */}
+
+    <DemoList />
+
     </>
   )
 }
+
+export default App;
