@@ -1,5 +1,6 @@
 // import DemoCounter from "./pages/DemoCounter";
 import { DemoList } from "./pages/DemoList";
+import { DemoListHTP } from "./pages/DemoListHTTP";
 
 function App() {
 
@@ -8,7 +9,8 @@ function App() {
     {/* <h1>Demo Counter</h1>
     <DemoCounter /> */}
 
-    <DemoList />
+    {/* <DemoList /> */}
+    <DemoListHTP />
 
     </>
   )
