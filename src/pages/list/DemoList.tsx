@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ToJson } from "../components/ToJson";
+import { ToJson } from "../../components/ToJson";
 
 const initialState = [
     { id: 1, name: 'Fabio' },

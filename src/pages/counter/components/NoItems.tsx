@@ -1,7 +1,9 @@
+import css from './NoItems.module.css'
+
 const NoItems = () => {
     return (
       <>
-      <h1>No Items</h1>
+      <h1 className={css.title}>No Items</h1>
       </>
     )
   }

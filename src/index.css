@@ -1,0 +1,11 @@
+.bg-dark {
+    background-color: #000;
+}
+
+.bg-light {
+    background-color: #ccc;
+}
+
+.title {
+    border: 15px solid purple;
+}

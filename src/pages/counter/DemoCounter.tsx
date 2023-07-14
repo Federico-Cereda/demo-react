@@ -1,6 +1,6 @@
 import { useState } from "react";
-import NoItems from "../components/NoItems";
-import { Products } from "../components/Products";
+import NoItems from "./components/NoItems";
+import { Products } from "./components/Products";
 
 function DemoCounter() {
   const [totalProducts, setTotalProducts] = useState(0);

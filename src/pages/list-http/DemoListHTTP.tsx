@@ -1,39 +1,57 @@
 import { useEffect, useState } from "react";
-import { ToJson } from "../components/ToJson";
-import { User } from "../model/user";
+import { ToJson } from "../../components/ToJson";
+import { User } from "../../model/user";
 import axios from "axios";
 
 export function DemoListHTP() {
     const [list, setList] = useState<User[]>([])
+    const [error, setError] = useState(false)
+    const [loading, setLoading] = useState(false)
 
     useEffect(() => {
+        setLoading(true);
         console.log('init')
         axios.get<User[]>('https://jsonplaceholder.typicode.com/users')
         .then((res) => {
             console.log('success', res.data)
             setList(res.data)
         })
+        .catch(() => {
+            setError(true);
+        })
+        .finally(() => setLoading(false))
     }, [])
     
     function addUser() {
+        setError(false);
+        setLoading(true);
         axios.post<User>('https://jsonplaceholder.typicode.com/users', {
             name: 'Mario'
         }).then(res => {
-            setList([...list, res.data])
+            setList(prev => [...prev, res.data])
         })
+        .catch(() => {
+            setError(true);
+        })
+        .finally(() => setLoading(false))
     }
 
     function deleteUser(idToRemove: number) {
+        setLoading(true);
         axios.delete(`https://jsonplaceholder.typicode.com/users/${idToRemove}`)
         .then(() => {
             setList(
-            list.filter(item => item.id !== idToRemove)
+            prev => prev.filter(item => item.id !== idToRemove)
             )
-        })   
+        })
+        .finally(() => setLoading(false))
     }
 
     return <div>
         <div>Demo list HTTP</div>
+
+        { error && <div>AHIA! problemi server</div> }
+        { loading && <div>loading...</div> }
 
         <button onClick={addUser}>Add User</button>
         {
