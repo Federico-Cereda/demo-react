@@ -13,7 +13,7 @@ export function Panel(props: PropsWithChildren<PanelProps>) {
                     Children.toArray(children)
                     .filter((child: any) => {
                         console.log(child)
-                        return child.type.name === 'PaneTitle'
+                        return child.type.name === 'PanelTitle'
                     })
                 }
                 </div>
