@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ToJson } from "../../components/ToJson";
+import { ToJson } from "../../shared/ToJson";
 import { User } from "../../model/user";
 import axios from "axios";
 
