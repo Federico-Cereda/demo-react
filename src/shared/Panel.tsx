@@ -1,4 +1,4 @@
-import { Children, PropsWithChildren, createElement } from "react";
+import { Children, PropsWithChildren } from "react";
 
 interface PanelProps {
 }

@@ -5,8 +5,10 @@ import { DemoListHTP } from "./pages/list-http/DemoListHTTP";
 import { DemoStyling } from "./pages/styling/DemoStyling";
 import { UiKitDemo } from "./pages/uikit/UiKitDemo";
 import clsx from "clsx";
+import { DemoEvents } from "./pages/forms/DemoEvents";
+import { Landing } from "./pages/landing/Landing";
 
-export type PageName = 'counter' | 'list' | 'list-http' | 'styling' | 'uikit'
+export type PageName = 'counter' | 'list' | 'list-http' | 'landing' | 'styling' | 'uikit' | 'events'
 
 function App() {
   const [page, setPage] = useState<PageName>('counter')
@@ -25,6 +27,8 @@ function App() {
         <button className={getActiveClass('list-http')} onClick={() => setPage('list-http')}>List Http</button>
         <button className={getActiveClass('styling')} onClick={() => setPage('styling')}>Styling</button>
         <button className={getActiveClass('uikit')} onClick={() => setPage('uikit')}>UIKIT</button>
+        <button className={getActiveClass('landing')} onClick={() => setPage('landing')}>Landing</button>
+        <button className={getActiveClass('events')} onClick={() => setPage('events')}>Events</button>
       </div>
     <hr/>
     <Page name={page} />
@@ -48,6 +52,8 @@ export function Page({ name }: PageProps) {
       case 'list-http': return <DemoListHTP />;
       case 'styling': return <DemoStyling />;
       case 'uikit': return <UiKitDemo />;
+      case 'events': return <DemoEvents />;
+      case 'landing': return <Landing />;
     }
   }
 
