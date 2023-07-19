@@ -3,7 +3,7 @@ import { ToJson } from "../../shared/ToJson";
 import { User } from "../../model/user";
 import axios from "axios";
 
-export function DemoListHTP() {
+export function DemoListHTTP() {
     const [list, setList] = useState<User[]>([])
     const [error, setError] = useState(false)
     const [loading, setLoading] = useState(false)
@@ -60,6 +60,7 @@ export function DemoListHTP() {
                 <li key={item.id}>
                     {item.id} - {item.name}
                     <button onClick={() => deleteUser(item.id)}>Delete</button>
+                    <button>Details</button>
                 </li>
                 )
             })

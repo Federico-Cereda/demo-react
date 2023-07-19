@@ -1,61 +1,50 @@
-import { useState } from "react";
-import DemoCounter from "./pages/counter/DemoCounter";
+// import DemoCounter from "./pages/counter/DemoCounter";
 import { DemoList } from "./pages/list/DemoList";
-import { DemoListHTP } from "./pages/list-http/DemoListHTTP";
+import { DemoListHTTP } from "./pages/list-http/DemoListHTTP";
 import { DemoStyling } from "./pages/styling/DemoStyling";
 import { UiKitDemo } from "./pages/uikit/UiKitDemo";
-import clsx from "clsx";
 import { DemoEvents } from "./pages/forms/DemoEvents";
 import { Landing } from "./pages/landing/Landing";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { NavBar } from "./core/NavBar";
+import { UsersDetails } from "./pages/users-details/UsersDetails";
+import { Suspense, lazy } from "react";
+import { UIKitPanelsDemo } from "./pages/uikit/pages/UIKitPanelsDemo";
+import { UIKitMapsDemo } from "./pages/uikit/pages/UIKitMapsDemo";
+import { UIKitTabbarDemo } from "./pages/uikit/pages/UIKitTabbarDemo";
 
-export type PageName = 'counter' | 'list' | 'list-http' | 'landing' | 'styling' | 'uikit' | 'events'
+const DemoCounter = lazy(() => import('./pages/counter/DemoCounter'))
 
 function App() {
-  const [page, setPage] = useState<PageName>('counter')
-
-  function getActiveClass(pageToCheck: PageName) {
-    return clsx(
-      'btn btn-outline-primary', { 'bg-warning': page === pageToCheck }
-    )
-  }
 
   return (
-    <div>
-      <div className="btn-group">
-        <button className={getActiveClass('counter')} onClick={() => setPage('counter')}>Counter</button>
-        <button className={getActiveClass('list')} onClick={() => setPage('list')}>List</button>
-        <button className={getActiveClass('list-http')} onClick={() => setPage('list-http')}>List Http</button>
-        <button className={getActiveClass('styling')} onClick={() => setPage('styling')}>Styling</button>
-        <button className={getActiveClass('uikit')} onClick={() => setPage('uikit')}>UIKIT</button>
-        <button className={getActiveClass('landing')} onClick={() => setPage('landing')}>Landing</button>
-        <button className={getActiveClass('events')} onClick={() => setPage('events')}>Events</button>
-      </div>
-    <hr/>
-    <Page name={page} />
-    </div>
+    <BrowserRouter>
+    <NavBar />
+    <Routes>
+      <Route path="counter" element={ 
+      <Suspense fallback={ <div>loading...</div> }>
+        <DemoCounter />
+      </Suspense>
+      } />
+      <Route path="list" element={<DemoList />} />
+      <Route path="users" element={<DemoListHTTP />} />
+      <Route path="users/:userId" element={<UsersDetails />} />
+      <Route path="styling" element={<DemoStyling />} />
+
+      <Route path="uikit" element={<UiKitDemo />}>
+        <Route path="panels" element={<UIKitPanelsDemo />} />
+        <Route path="maps" element={<UIKitMapsDemo />} />
+        <Route path="tabbar" element={<UIKitTabbarDemo />} />
+        <Route index element={ <Navigate to="panels"/>} />
+      </Route>
+
+      <Route path="landing" element={<Landing />} />
+      <Route path="events" element={<DemoEvents />} />
+      <Route path="/" element={ <div>Welcome page</div> } />
+      <Route path="*" element={ <Navigate to="/" /> } />
+    </Routes>
+    </BrowserRouter>
   )
 }
 
 export default App;
-
-// PAGE RENDERING
-
-type PageProps = {
-  name: PageName;
-}
-
-export function Page({ name }: PageProps) {
-  function renderPage() {
-    switch (name) {
-      case 'counter': return <DemoCounter />;
-      case 'list': return <DemoList />;
-      case 'list-http': return <DemoListHTP />;
-      case 'styling': return <DemoStyling />;
-      case 'uikit': return <UiKitDemo />;
-      case 'events': return <DemoEvents />;
-      case 'landing': return <Landing />;
-    }
-  }
-
-  return <div className="mx-3">{renderPage()}</div>
-  }

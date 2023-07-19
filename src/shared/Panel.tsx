@@ -1,9 +1,6 @@
 import { Children, PropsWithChildren } from "react";
 
-interface PanelProps {
-}
-
-export function Panel(props: PropsWithChildren<PanelProps>) {
+export function Panel(props: PropsWithChildren) {
     const { children } = props;
     return <div>
         <div className="card">
