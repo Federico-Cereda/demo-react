@@ -3,7 +3,7 @@ import { DemoList } from "./pages/list/DemoList";
 import { DemoListHTTP } from "./pages/list-http/DemoListHTTP";
 import { DemoStyling } from "./pages/styling/DemoStyling";
 import { UiKitDemo } from "./pages/uikit/UiKitDemo";
-import { DemoEvents } from "./pages/forms/DemoEvents";
+import { DemoUncontrolledForm } from "./pages/forms/DemoUncontrolledForm";
 import { Landing } from "./pages/landing/Landing";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { NavBar } from "./core/NavBar";
@@ -12,6 +12,7 @@ import { Suspense, lazy } from "react";
 import { UIKitPanelsDemo } from "./pages/uikit/pages/UIKitPanelsDemo";
 import { UIKitMapsDemo } from "./pages/uikit/pages/UIKitMapsDemo";
 import { UIKitTabbarDemo } from "./pages/uikit/pages/UIKitTabbarDemo";
+import { DemoControlledForm } from "./pages/forms/DemoControlledForm";
 
 const DemoCounter = lazy(() => import('./pages/counter/DemoCounter'))
 
@@ -39,7 +40,8 @@ function App() {
       </Route>
 
       <Route path="landing" element={<Landing />} />
-      <Route path="events" element={<DemoEvents />} />
+      <Route path="forms-uncontrolled" element={<DemoUncontrolledForm />} />
+      <Route path="forms-controlled" element={<DemoControlledForm />} />
       <Route path="/" element={ <div>Welcome page</div> } />
       <Route path="*" element={ <Navigate to="/" /> } />
     </Routes>
