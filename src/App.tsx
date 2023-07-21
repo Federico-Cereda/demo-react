@@ -13,6 +13,7 @@ import { UIKitPanelsDemo } from "./pages/uikit/pages/UIKitPanelsDemo";
 import { UIKitMapsDemo } from "./pages/uikit/pages/UIKitMapsDemo";
 import { UIKitTabbarDemo } from "./pages/uikit/pages/UIKitTabbarDemo";
 import { DemoControlledForm } from "./pages/forms/DemoControlledForm";
+import { Crud } from "./pages/crud/Crud";
 
 const DemoCounter = lazy(() => import('./pages/counter/DemoCounter'))
 
@@ -42,6 +43,7 @@ function App() {
       <Route path="landing" element={<Landing />} />
       <Route path="forms-uncontrolled" element={<DemoUncontrolledForm />} />
       <Route path="forms-controlled" element={<DemoControlledForm />} />
+      <Route path="crud" element={<Crud />} />
       <Route path="/" element={ <div>Welcome page</div> } />
       <Route path="*" element={ <Navigate to="/" /> } />
     </Routes>

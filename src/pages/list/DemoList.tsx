@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { ToJson } from "../../shared/ToJson";
+import { PageTitle } from "../../shared/PageTitle";
 
 const initialState = [
     { id: 1, name: 'Fabio' },
@@ -21,10 +22,8 @@ export function DemoList() {
         )
     }
 
-    console.log('render')
-
     return <div>
-        <div>Demo list</div>
+        <PageTitle>Demo list</PageTitle>
 
         <button onClick={addUser}>Add User</button>
         {

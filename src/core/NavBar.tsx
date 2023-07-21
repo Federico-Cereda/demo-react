@@ -16,6 +16,7 @@ export function NavBar() {
             <NavLink to="landing" className={isActive}>Landing</NavLink>
             <NavLink to="forms-uncontrolled" className={isActive}>Forms 1</NavLink>
             <NavLink to="forms-controlled" className={isActive}>Forms 2</NavLink>
+            <NavLink to="crud" className={isActive}>Crud</NavLink>
       </div>
       <hr/>
       </>

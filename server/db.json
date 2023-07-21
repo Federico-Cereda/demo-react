@@ -1,0 +1,25 @@
+{
+    "login": {
+        "token": "qwerty",
+        "role": "admin",
+        "displayName": "Fabio Biondi"
+
+    },
+    "products": [
+        {
+            "id": 1,
+            "name": "Nutella",
+            "cost": 5
+        },
+        {
+            "id": 2,
+            "name": "Pane",
+            "cost": 1
+        },
+        {
+            "id": 3,
+            "name": "Latte",
+            "cost": 2
+        }
+    ]
+}
